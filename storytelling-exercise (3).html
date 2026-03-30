@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storytelling Exercise</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Roboto+Slab:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto Slab', serif;
+            background: #ffffff;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: #f5f5f5;
+            border: 2px dashed #003c35;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-family: 'Roboto Slab', serif;
+            font-size: 12px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-left: 30px;
+        }
+        
+        .logo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            color: #003c35;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-family: 'Roboto Slab', serif;
+            color: #5a5a5a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle strong {
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        
+        .prompts-section {
+            background: #003c35;
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+        
+        .prompts-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+        
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .prompt-column {
+            color: #f0ede8;
+        }
+        
+        .prompt-column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .prompt-column li {
+            margin-bottom: 12px;
+            font-family: 'Roboto Slab', serif;
+        }
+        
+        .prompt-column strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .question-box {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .question-box:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .question-box:nth-child(4) {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        
+        .question-number {
+            color: #003c35;
+            font-family: 'Raleway', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .question-label {
+            background: #003c35;
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .question-prompt {
+            font-family: 'Roboto Slab', serif;
+            font-size: 13px;
+            color: #6a6a6a;
+            margin-bottom: 8px;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 110px;
+            padding: 14px;
+            border: 2px solid #003c35;
+            border-radius: 4px;
+            font-family: 'Roboto Slab', serif;
+            font-size: 14px;
+            color: #2d2d2d;
+            background: #ffffff;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #003c35;
+            box-shadow: 0 0 0 3px rgba(0, 60, 51, 0.1);
+        }
+        
+        textarea::placeholder {
+            color: #999;
+            font-family: 'Roboto Slab', serif;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        button {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Roboto Slab', serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-save {
+            background: #003c35;
+            color: #ffffff;
+        }
+        
+        .btn-save:hover {
+            background: #002a1f;
+        }
+        
+        .btn-clear {
+            background: #e8e4dc;
+            color: #5a5a5a;
+        }
+        
+        .btn-clear:hover {
+            background: #d8d4cc;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            font-family: 'Roboto Slab', serif;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .prompts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .questions-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header {
+                flex-direction: column;
+            }
+            
+            .logo-placeholder {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>Storytelling Exercise</h1>
+                <p class="subtitle">Stories connect us with the world because each of us has a <strong>unique story</strong> of our own. Choose a topic below to start writing yours!</p>
+            </div>
+            <div class="logo-placeholder" id="logoContainer">
+                <span>Your logo here</span>
+            </div>
+        </div>
+        
+        <div class="prompts-section">
+            <div class="prompts-title">Choose an experience to write about:</div>
+            <div class="prompts-grid">
+                <div class="prompt-column">
+                    <ul>
+                        <li>The day you became a <strong>leader</strong></li>
+                        <li>When you learned an <strong>important lesson</strong> or <strong>changed your behavior</strong></li>
+                        <li>A <strong>memorable trip</strong> you've had</li>
+                        <li>The time you <strong>conquered a challenge</strong>, dilemma, or crisis situation</li>
+                    </ul>
+                </div>
+                <div class="prompt-column">
+                    <ul>
+                        <li>The day you realised the world is <strong>bigger than you thought</strong></li>
+                        <li>The most exciting experience related to <strong>music</strong> you've had (i.e. a concert, party, discovering new style or artist, etc.)</li>
+                        <li>A situation that taught you how <strong>first impressions</strong> can be misleading</li>
+                    </ul>
+                </div>
+                <div class="prompt-column">
+                    <ul>
+                        <li>A time when you <strong>got lost</strong> driving or travelling</li>
+                        <li>Your fun <strong>holiday</strong> traditions</li>
+                        <li>A funny or embarrassing story based on a <strong>misunderstanding</strong></li>
+                        <li>Your <strong>weirdest</strong> experience with a stranger or celebrity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <form id="storyForm">
+            <div class="questions-grid">
+                <div class="question-box">
+                    <div class="question-number">1</div>
+                    <div class="question-label">How did the experience begin?</div>
+                    <div class="question-prompt">It all began when I…</div>
+                    <textarea name="q1" placeholder="Start typing here..."></textarea>
+                </div>
+                
+                <div class="question-box">
+                    <div class="question-number">4</div>
+                    <div class="question-label">How did you feel during or after your experience?</div>
+                    <div class="question-prompt">I felt…</div>
+                    <textarea name="q4" placeholder="Start typing here..."></textarea>
+                </div>
+                
+                <div class="question-box">
+                    <div class="question-number">2</div>
+                    <div class="question-label">Where and when did it happen?</div>
+                    <div class="question-prompt">It happened in…</div>
+                    <textarea name="q2" placeholder="Start typing here..."></textarea>
+                </div>
+                
+                <div class="question-box">
+                    <div class="question-number">5</div>
+                    <div class="question-label">Why is this experience significant to you?</div>
+                    <div class="question-prompt">It was significant because…</div>
+                    <textarea name="q5" placeholder="Start typing here..."></textarea>
+                </div>
+                
+                <div class="question-box">
+                    <div class="question-number">3</div>
+                    <div class="question-label">What caused your experience to happen?</div>
+                    <div class="question-prompt">It was caused by…</div>
+                    <textarea name="q3" placeholder="Start typing here..."></textarea>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" class="btn-save" onclick="downloadAnswers()">Save My Story</button>
+                <button type="button" class="btn-clear" onclick="clearForm()">Clear</button>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <p>💡 Your answers are saved in your browser. Download to keep a copy!</p>
+        </div>
+    </div>
+    
+    <script>
+        // Logo - ENC Foundation
+        const logoContainer = document.getElementById('logoContainer');
+        logoContainer.innerHTML = '<img src="https://raw.githubusercontent.com/equalitync/storytelling-exercise/main/ENC-Foundation-Favicon-2024__1_.png" alt="ENC Foundation Logo">';
+        
+        // Auto-save to localStorage as they type
+        const form = document.getElementById('storyForm');
+        const inputs = form.querySelectorAll('textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                localStorage.setItem(input.name, input.value);
+            });
+            
+            // Load saved data on page load
+            const saved = localStorage.getItem(input.name);
+            if (saved) {
+                input.value = saved;
+            }
+        });
+        
+        function downloadAnswers() {
+            const q1 = document.querySelector('textarea[name="q1"]').value;
+            const q2 = document.querySelector('textarea[name="q2"]').value;
+            const q3 = document.querySelector('textarea[name="q3"]').value;
+            const q4 = document.querySelector('textarea[name="q4"]').value;
+            const q5 = document.querySelector('textarea[name="q5"]').value;
+            
+            if (!q1 && !q2 && !q3 && !q4 && !q5) {
+                alert('Please write something before saving!');
+                return;
+            }
+            
+            // Send to Formspree
+            const formData = new FormData();
+            formData.append('How did the experience begin?', q1 || '(not answered)');
+            formData.append('Where and when did it happen?', q2 || '(not answered)');
+            formData.append('What caused your experience to happen?', q3 || '(not answered)');
+            formData.append('How did you feel during or after your experience?', q4 || '(not answered)');
+            formData.append('Why is this experience significant to you?', q5 || '(not answered)');
+            
+            fetch('https://formspree.io/f/xkopryel', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('✓ Your story has been saved!');
+                    // Clear local storage after successful submission
+                    inputs.forEach(input => {
+                        localStorage.removeItem(input.name);
+                    });
+                    form.reset();
+                } else {
+                    alert('There was an issue saving your story. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an issue saving your story. Please try again.');
+            });
+        }
+        
+        function clearForm() {
+            if (confirm('Are you sure you want to clear your story? This cannot be undone.')) {
+                form.reset();
+                inputs.forEach(input => {
+                    localStorage.removeItem(input.name);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
